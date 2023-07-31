@@ -35,6 +35,7 @@ export const addUser = async (req, res) => {
   return res.status(201).send({ message: "User is registered successfully." });
 };
 
+// login user
 export const loginUser = async (req, res) => {
   const loginCredentials = req.body;
   //   check if user exists using email
@@ -99,12 +100,14 @@ export const authorizeUser = async (req, res, next) => {
   }
 };
 
+// get all users
 export const getAllUsers = async (req, res) => {
   const users = await User.find();
 
   return res.status(200).send({ message: users });
 };
 
+// delete account
 export const deleteAccount = async (req, res) => {
   await User.deleteOne({ _id: req.user._id });
 
