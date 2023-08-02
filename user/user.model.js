@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { userType } from "../constants/enum.js";
 
 // set rule
 const userSchema = new mongoose.Schema({
@@ -19,7 +20,7 @@ const userSchema = new mongoose.Schema({
 
   userType: {
     type: String,
-    enum: ["seeker", "provider"],
+    enum: userType,
     required: true,
     trim: true,
   },

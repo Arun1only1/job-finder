@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 import { locationSchema } from "./location.model.js";
+import {
+  qualificationEnum,
+  experienceEnum,
+  jobTimeEnum,
+} from "../constants/enum.js";
 
-const providerJobSchema = new mongoose.Schema({
+const orgJobSchema = new mongoose.Schema({
   title: {
     type: String,
     minlength: 10,
@@ -16,13 +21,13 @@ const providerJobSchema = new mongoose.Schema({
   experienceLevel: {
     type: String,
     required: true,
-    enum: ["entry", "mid", "senior", "none"],
+    enum: experienceEnum,
     trim: true,
   },
   qualification: {
     type: String,
     required: true,
-    enum: ["none", "school", "bachelor", "masters", "phd"],
+    enum: qualificationEnum,
     trim: true,
   },
   industryType: {
@@ -66,9 +71,9 @@ const providerJobSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    enum: ["part", "full"],
+    enum: jobTimeEnum,
   },
 });
 
 // create table
-export const ProviderJob = mongoose.model("ProviderJob", providerJobSchema);
+export const OrgJob = mongoose.model("OrgJob", orgJobSchema);
